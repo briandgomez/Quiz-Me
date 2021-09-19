@@ -8,30 +8,34 @@ var containerEl = document.getElementsByClassName("container");
 var questionEl = document.getElementById("question-element");
 var answerEl = document.getElementById("answer-element");
 
-//Display title, message and start button
+//Display title, message and start button with their respecive styles
 var quizTitle = document.createElement('h1');
 quizTitle.textContent = 'Coding Quiz Challenge';
-quizTitle.setAttribute('style', 'text-align:center');
+quizTitle.style.textAlign = 'center';
+quizTitle.style.textDecoration = 'underline'
 quizTitle.addClassName = document.body.appendChild(quizTitle);
 
 var quizMessage = document.createElement('p');
-quizMessage.textContent = 'Answer the following questions related to javascript. Everytime you select a incorret answer the timer will decrease by 10 seconds!';
-quizMessage.setAttribute('style', 'text-align:center');
+quizMessage.textContent = 'Answer the following questions. Everytime you select a incorret answer the timer will decrease by 10 seconds!';
 document.body.appendChild(quizMessage);
 
 var startButton = document.createElement('button');
 startButton.textContent = 'Start';
 startButton.style.display = 'flex';
 startButton.style.margin = 'auto';
+startButton.style.borderRadius = '6px';
+startButton.style.backgroundColor = 'lightblue';
+startButton.style.boxShadow = '1px 1px'
 document.body.appendChild(startButton);
 
+
 //Global variables used by the functions
-var currentTime = 50;
+var currentTime = 70;
 var currentQuestion = 0;
 var currentScore = 0;
 
 //Questions array
-var questionObject = [
+var questionArray = [
     {
         q: '1. What does ‘HTML’ stand for?',
         a: [
@@ -81,7 +85,7 @@ function startTimer() {
         //Countdown for timer
         else {
             currentTime--;
-            timerEl.textContent = 'Time:' + currentTime;
+            timerEl.textContent = 'Time: ' + currentTime;
         }
     }, 1000)
 
@@ -98,22 +102,27 @@ function startQuiz() {
 
 //Displays questions
 function questions() {
-    //Assigns question to div element
-    console.log('Current question', currentQuestion);
-    if (currentQuestion >= questionObject.length || currentTime === 0) {
+    //Ensures that quiz ends when there are no more questions left to asnwer OR when the time runs out
+    if (currentQuestion >= questionArray.length || currentTime === 0) {
         return checkHighScore();
     }
 
-    questionEl.textContent = questionObject[currentQuestion].q
+    questionEl.textContent = questionArray[currentQuestion].q
 
     //Clears answers div element
     answerEl.textContent = '';
 
     //Iterates through the length of the answers
-    for (var i = 0; i < questionObject[currentQuestion].a.length; i++) {
+    for (var i = 0; i < questionArray[currentQuestion].a.length; i++) {
         var answerbutton = document.createElement('button');
-        answerbutton.textContent = questionObject[currentQuestion].a[i];
-        answerbutton.addEventListener('click', function(){
+        answerbutton.textContent = questionArray[currentQuestion].a[i];
+        answerbutton.style.display = 'block';
+        answerbutton.style.borderRadius = '6px';
+        answerbutton.style.backgroundColor = 'lightblue';
+        answerbutton.style.margin = 'auto';
+        answerbutton.style.padding = '8px';
+        answerbutton.style.boxShadow = '1px 1px'
+        answerbutton.addEventListener('click', function () {
             checkAnswer(this.textContent);
         });
         answerEl.appendChild(answerbutton);
@@ -123,20 +132,14 @@ function questions() {
 
 
 function checkAnswer(answer) {
-    var correctSelected = questionObject[currentQuestion].correct;
-    console.log('Answer', answer);
-
+    var correctSelected = questionArray[currentQuestion].correct;
     if (answer === correctSelected) {
-        //console.log(correctSelected)
         currentScore++;
-        //console.log(currentScore)
     } else {
-        console.log('incorrect')
         currentTime -= 10;
     }
 
     currentQuestion++;
-    console.log('Checkanswers icnrement', currentQuestion);
     questions();
 }
 
@@ -146,14 +149,14 @@ function checkHighScore() {
 
     //Checks if a high score currently exists OR if the current score is is greater than the high score
     if (!currentHighScore || currentHighScore < currentScore) {
+        alert('Your Score: ' + currentScore);
         var userInitials = prompt('Enter your initals')
         localStorage.setItem('quizHighScore', currentScore);
         localStorage.setItem('quizHighInitials', userInitials)
+        alert('New High Score: ' + currentScore);
     } else {
-        alert('Current score was not high enough' + ' Your score: ' + currentScore);
+        alert('Current score was not high enough' + '\r\n' + 'Your score: ' + currentScore);
     }
-
-    alert('High Score: ' + currentHighScore);
 }
 
 //Add event listener for button to move onto next page

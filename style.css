@@ -1,8 +1,37 @@
+:root {
+    background-color: rgba(92, 27, 27, 0.603);
+}
 header {
     display: flex;
 }
 
+body {
+    margin-top: 13%;
+}
+
 .time-container {
-    margin-left: auto;
+    margin: auto;
+}
+
+ p {
+    text-align: center;
+    margin: 20px;
+    font-family: system-ui;
+    font-weight: bold;
+}
+
+#question-element, #answer-element {
+    text-align: center;
+}
+
+#question-element {
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+    font-family: arial;
+}
+
+#answer-element {
+    margin: 10px;
 }
 
