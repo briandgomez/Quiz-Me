@@ -30,7 +30,7 @@ document.body.appendChild(startButton);
 
 
 //Global variables used by the functions
-var currentTime = 20;
+var currentTime = 70;
 var currentQuestion = 0;
 var currentScore = 0;
 
