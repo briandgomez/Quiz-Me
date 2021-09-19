@@ -1,3 +1,4 @@
+//Final draft
 //Reference to body
 var body = document.body
 
