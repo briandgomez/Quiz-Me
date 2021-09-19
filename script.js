@@ -52,7 +52,7 @@ var questionArray = [
         correct: 'brackets'
     },
     {
-        q: '3. How do you initialize flexbos when using CSS?',
+        q: '3. How do you initialize flexbox when using CSS?',
         a: [
             'display: flex', 'display flex', 'display: block'
         ],
