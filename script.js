@@ -17,7 +17,7 @@ quizTitle.style.textDecoration = 'underline'
 quizTitle.addClassName = document.body.appendChild(quizTitle);
 
 var quizMessage = document.createElement('p');
-quizMessage.textContent = 'Answer the following questions. Everytime you select a incorret answer the timer will decrease by 10 seconds!';
+quizMessage.textContent = 'Answer the following questions. Everytime you select a incorrect answer the timer will decrease by 10 seconds!';
 document.body.appendChild(quizMessage);
 
 var startButton = document.createElement('button');
