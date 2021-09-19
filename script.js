@@ -30,7 +30,7 @@ document.body.appendChild(startButton);
 
 
 //Global variables used by the functions
-var currentTime = 70;
+var currentTime = 20;
 var currentQuestion = 0;
 var currentScore = 0;
 
@@ -81,6 +81,7 @@ function startTimer() {
         //Stops timer when time runs out
         if (currentTime === 0) {
             clearInterval(timeInterval);
+            checkHighScore();
         }
         //Countdown for timer
         else {
@@ -103,7 +104,7 @@ function startQuiz() {
 //Displays questions
 function questions() {
     //Ensures that quiz ends when there are no more questions left to asnwer OR when the time runs out
-    if (currentQuestion >= questionArray.length || currentTime === 0) {
+    if (currentTime === 0 || currentQuestion >= questionArray.length) {
         return checkHighScore();
     }
 
