@@ -4,4 +4,4 @@ Coding quizzes and challenges are the best way to learn a programming lanauage. 
 ![image](https://user-images.githubusercontent.com/69539559/133913590-c09a9021-d241-45d9-9cc1-a95a9bad2314.png)
 
 # Link
-https://briandgomez.github.io/C4-Code-Quiz/
+https://briandgomez.github.io/Quiz-Me/
